@@ -1,17 +1,19 @@
 import { Component } from '@angular/core';
 import { IProduct } from './product.model';
 import { CurrencyPipe, NgClass, NgFor, NgIf } from '@angular/common';
+import { ProductDetailsComponent } from '../product-details/product-details.component';
 
 @Component({
   selector: 'bot-catalog',
   standalone: true,
-  imports: [NgFor, NgIf, CurrencyPipe, NgClass],
+  imports: [NgFor, NgIf, CurrencyPipe, NgClass, ProductDetailsComponent],
   templateUrl: './catalog.component.html',
   styleUrl: './catalog.component.css',
 })
 export class CatalogComponent {
   products: IProduct[];
   filter: string = '';
+  cart: IProduct[] = [];
 
   constructor() {
     this.products = [
@@ -189,6 +191,11 @@ export class CatalogComponent {
         discount: 0,
       },
     ];
+  }
+
+  addToCart(product: IProduct) {
+    this.cart.push(product);
+    console.log('product ${product.name} added to cart');
   }
 
   getFilteredProducts() {
