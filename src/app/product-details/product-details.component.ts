@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { IProduct } from '../catalog/product.model';
 import { CurrencyPipe, NgClass, NgIf } from '@angular/common';
 
@@ -11,8 +11,9 @@ import { CurrencyPipe, NgClass, NgIf } from '@angular/common';
 })
 export class ProductDetailsComponent {
   @Input() product!: IProduct;
+  @Output() buy = new EventEmitter();
 
-  addToCart(product: IProduct) {
-    console.log('Product added to cart:', product);
+  buyButtonClicked(product: IProduct) {
+    this.buy.emit();
   }
 }
