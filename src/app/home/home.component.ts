@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'bot-home',
-  standalone: true,
-  imports: [],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })

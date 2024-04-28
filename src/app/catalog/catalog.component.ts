@@ -7,8 +7,6 @@ import { ProductService } from './product.service';
 
 @Component({
   selector: 'bot-catalog',
-  standalone: true,
-  imports: [NgFor, NgIf, CurrencyPipe, NgClass, ProductDetailsComponent],
   templateUrl: './catalog.component.html',
   styleUrl: './catalog.component.css',
 })
@@ -17,15 +15,15 @@ export class CatalogComponent {
   filter: string = '';
 
   constructor(
-    private cartSvc: CartService
-  ) // private productSvc: ProductService
-  {}
+    private cartSvc: CartService,
+    private productSvc: ProductService
+  ) {}
 
-  // ngOnInit() {
-  //   this.productSvc.getProducts().subscribe((products) => {
-  //     this.products = products;
-  //   });
-  // }
+  ngOnInit() {
+    this.productSvc.getProducts().subscribe((products) => {
+      this.products = products;
+    });
+  }
 
   addToCart(product: IProduct) {
     this.cartSvc.add(product);

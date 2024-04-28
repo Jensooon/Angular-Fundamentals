@@ -5,7 +5,7 @@ import { CatalogComponent } from './catalog/catalog.component';
 import { SiteHeaderComponent } from './site-header/site-header.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
