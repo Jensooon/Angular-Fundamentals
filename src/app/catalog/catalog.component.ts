@@ -4,6 +4,7 @@ import { CurrencyPipe, NgClass, NgFor, NgIf } from '@angular/common';
 import { ProductDetailsComponent } from '../product-details/product-details.component';
 import { CartService } from '../cart/cart.service';
 import { ProductService } from './product.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'bot-catalog',
@@ -16,12 +17,16 @@ export class CatalogComponent {
 
   constructor(
     private cartSvc: CartService,
-    private productSvc: ProductService
+    private productSvc: ProductService,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
     this.productSvc.getProducts().subscribe((products) => {
       this.products = products;
+    });
+    this.route.params.subscribe((params) => {
+      this.filter = params['filter'] ?? '';
     });
   }
 
